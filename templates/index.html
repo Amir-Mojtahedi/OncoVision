@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Onco_Vision</title>
+  </head>
+  <body>
+    <h1>Simple GET from Flask</h1>
+    <div id="result">Loading...</div>
+
+    <script>
+      // Make a GET request to "/api/greeting" on page load
+      fetch("/api/greeting")
+        .then(response => response.json())
+        .then(data => {
+          // data is the JSON object returned by Flask
+          const resultDiv = document.getElementById('result');
+          resultDiv.textContent = data.message;
+        })
+        .catch(error => {
+          console.error("Error fetching data:", error);
+        });
+    </script>
+  </body>
+</html>
