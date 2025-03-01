@@ -5,13 +5,25 @@ import os
 # 1) Create the Flask app first
 app = Flask(__name__, static_folder='frontend/build')
 
-# 2) Then apply CORS to the app
+# 2) Apply CORS to allow frontend access
 CORS(app)
 
+# Home route
+@app.route('/')
+def home():
+    return jsonify({"message": "Welcome to the Flask backend!"})
+
+# API route to get data
 @app.route('/api/data')
 def get_data():
     return jsonify({"values": [10, 25, 8, 15, 30, 18]})
 
+# Status Route
+@app.route('/status', methods=['GET'])
+def status():
+    return jsonify({"status": "OK", "message": "Flask backend is running!"})
+
+# Serve React frontend
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_react_app(path):
