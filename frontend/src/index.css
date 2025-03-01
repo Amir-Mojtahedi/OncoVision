@@ -1,0 +1,80 @@
+/* index.css */
+
+/* Reset some default browser styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Body-level styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Main container, centers content with max width */
+  .app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  /* Simple header style */
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    margin-bottom: 0.5rem;
+  }
+  header p {
+    color: #666;
+  }
+  
+  /* A card-like container for your chart or data sections */
+  .chart-container {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Example flex layout for a bar chart or any horizontally spaced visualization */
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;   /* Align bars to bottom */
+    gap: 10px;              /* Space between bars */
+    height: 200px;          /* Fixed height for the chart area */
+    justify-content: center; 
+  }
+  
+  /* Individual bar styling */
+  .bar {
+    background-color: steelblue;
+    transition: background-color 0.3s ease;
+    width: 30px; /* Adjust to your data size or D3 scaling */
+  }
+  
+  /* Hover effect on bars */
+  .bar:hover {
+    background-color: #4682b4;
+  }
+  
+  /* Label styling for each bar (or data point) */
+  .bar-label {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 5px; /* Space between bar and label */
+  }
+  
+  /* Footer or any extra text area */
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 2rem;
+  }
+  
