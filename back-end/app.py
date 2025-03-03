@@ -4,18 +4,16 @@ from flask_cors import CORS  # Allows React to communicate with Flask
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-@app.route('/')
-def index():
-    # Renders the templates/index.html file
-    return render_template('index.html')
-
-@app.route('/api/greeting', methods=['GET'])
-def greeting():
+@app.route('/api/status', methods=['GET'])
+def status():
     # Returns a JSON response
-    return jsonify({"message": "Hello from Flask backend!"})
+    return jsonify({
+        "statusCode": 200,
+        "status": "ok"
+        })
 
-@app.route('/post-data', methods=['POST'])
-def receive_data():
+@app.route('/api/ai-model', methods=['POST'])
+def ai_model():
     try:
         data = request.json  # Get JSON data from request
         print("Received data:", data)  # Print in terminal
