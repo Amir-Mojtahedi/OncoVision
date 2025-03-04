@@ -163,7 +163,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-frontend/node_modules/
+front-end/node_modules/
 
 # Spyder project settings
 .spyderproject
