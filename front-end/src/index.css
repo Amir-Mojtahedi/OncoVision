@@ -4,21 +4,21 @@
     margin: 0;
     padding: 0;
   }
-  
+
   /* Body-level styling */
   body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
   }
-  
+
   /* Main container, centers content with max width */
   .app-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 1.5rem;
   }
-  
+
   /* Simple header style */
   header {
     text-align: center;
@@ -30,7 +30,7 @@
   header p {
     color: #666;
   }
-  
+
   /* A card-like container for your chart or data sections */
   .chart-container {
     background-color: #fff;
@@ -39,7 +39,7 @@
     padding: 1.5rem;
     margin-bottom: 1.5rem;
   }
-  
+
   /* Example flex layout for a bar chart or any horizontally spaced visualization */
   .bar-chart {
     display: flex;
@@ -48,26 +48,26 @@
     height: 200px;          /* Fixed height for the chart area */
     justify-content: center; 
   }
-  
+
   /* Individual bar styling */
   .bar {
     background-color: steelblue;
     transition: background-color 0.3s ease;
     width: 30px; /* Adjust to your data size or D3 scaling */
   }
-  
+
   /* Hover effect on bars */
   .bar:hover {
     background-color: #4682b4;
   }
-  
+
   /* Label styling for each bar (or data point) */
   .bar-label {
     font-size: 0.85rem;
     text-align: center;
     margin-top: 5px; /* Space between bar and label */
   }
-  
+
   /* Footer or any extra text area */
   footer {
     text-align: center;
@@ -82,7 +82,7 @@
     gap: 15px;
     margin-top: 20px;
   }
-  
+
   button {
     padding: 10px 12px;
     font-size: 16px;
@@ -93,11 +93,11 @@
     border-radius: 5px;
     transition: background 0.3s;
   }
-  
+
   button:hover {
     background-color: darkblue;
   }
-  
+
   .response-container {
     background: #f4f4f4;
     padding: 15px;
@@ -105,5 +105,3 @@
     border-radius: 5px;
     white-space: pre-wrap; /* Keeps JSON formatting */
   }
-  
-  
