@@ -40,7 +40,6 @@
     margin-bottom: 1.5rem;
   }
 
-  /* Example flex layout for a bar chart or any horizontally spaced visualization */
   .bar-chart {
     display: flex;
     align-items: flex-end;   /* Align bars to bottom */

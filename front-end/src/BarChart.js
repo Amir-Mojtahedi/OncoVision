@@ -1,8 +1,9 @@
 import React from "react";
 import * as d3 from "d3";
 
+// Will vary from barcharts to other graphs depending on the dataset
 function BarChart({ data }) {
-  // For a React-DOM approach, we can do something like this:
+
   const maxValue = Math.max(...data, 0);
   const scale = d3.scaleLinear().domain([0, maxValue]).range([0, 200]);
 
