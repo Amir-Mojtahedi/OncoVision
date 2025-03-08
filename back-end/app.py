@@ -4,6 +4,14 @@ from flask_cors import CORS  # Allows React to communicate with Flask
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    """Returns hardcoded data for testing frontend"""
+    hardcoded_data = {
+        "values": [5, 15, 25, 10, 30, 18, 20]  
+    }
+    return jsonify(hardcoded_data)
+
 @app.route('/api/status', methods=['GET'])
 def status():
     # Returns a JSON response
