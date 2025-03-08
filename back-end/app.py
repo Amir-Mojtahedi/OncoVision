@@ -24,14 +24,6 @@ def ai_model():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
-# for general case of obtaining data and use with D3.js (BarChart.js)
-# @app.route('/api/mydata')
-# def my_data():
-#     # Read data from a file or database
-#     with open('data/myDataset.json') as f:
-#         data = json.load(f)
-#     return jsonify(data)
-
 
 if __name__ == '__main__':
     # Run on port 5000 by default; debug=True for auto-reload in dev
