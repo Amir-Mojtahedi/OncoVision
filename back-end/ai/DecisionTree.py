@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import numpy as np
-
+import os
 import matplotlib.pyplot as plt
 
 from scipy import stats
@@ -14,9 +14,7 @@ from sklearn.preprocessing import LabelEncoder
 from scipy.special import inv_boxcox
 
 csv_url = '/breast-cancer.csv' #Make sure in your personal drive, you have a folder called ai_accel and upload the breask-cancer.csv file there
-from google.colab import drive
-drive.mount('/content/drive')
-df = pd.read_csv(csv_url)
+df = pd.read_csv(f'{os.getcwd()}/back-end/ai/breast-cancer.csv')
 
 from sklearn import tree
 df['diagnosis_encode'] = LabelEncoder().fit_transform(df['diagnosis'])
