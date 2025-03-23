@@ -21,7 +21,7 @@ df['diagnosis_encode'] = LabelEncoder().fit_transform(df['diagnosis'])
 # Define the features (X) and target variable (y) for decision tree
 X = df.drop(['id', 'diagnosis', 'diagnosis_encode'], axis=1)
 y = df['diagnosis_encode']
-X.head()
+
 
 # Split the dataset into training and testing sets for decision tree
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
