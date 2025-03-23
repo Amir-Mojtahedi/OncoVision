@@ -15,10 +15,7 @@ from sklearn.preprocessing import LabelEncoder
 from scipy.special import inv_boxcox x
 
 #copy path
-csv_url = '/content/drive/MyDrive/AI-Acc.Project/breast cancer dataset/breast-cancer.csv'
-# Connect to you Google Drive
-from google.colab import drive
-drive.mount("/content/drive")
+df = pd.read_csv(f'{os.getcwd()}/back-end/ai/breast-cancer.csv')
 
 # Reading the CSV data from the specified URL into a DataFrame named 'df'
 df = pd.read_csv(csv_url)
