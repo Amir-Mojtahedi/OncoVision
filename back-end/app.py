@@ -1,7 +1,10 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS  
 import numpy as np
-from ai.logisticModel import top_5, scaler, logisticRegrssionModel
+from ai.logisticModel import logisticRegrssionModel
+from ai.decisionTree import decisionTreeModel
+from ai.randomforestmodel import randomForestModel
+from ai.utils.aiUtils import scaler, top_5
 
 app = Flask(__name__)
 CORS(app)
