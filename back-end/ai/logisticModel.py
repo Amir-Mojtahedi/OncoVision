@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
-df = pd.read_csv(f'{os.getcwd()}/back-end/ai/breast-cancer.csv')
+df = pd.read_csv(f'{os.getcwd()}/ai/breast-cancer.csv')
 df.drop(['id'], axis=1, inplace=True)
 df['diagnosis'] = LabelEncoder().fit_transform(df['diagnosis'])
 
