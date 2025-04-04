@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS  
 import numpy as np
-from ai.logisticModel import logisticRegrssionModel
+from ai.logisticModel import logisticRegressionModel
 from ai.decisionTree import decisionTreeModel
 from ai.randomforestmodel import randomForestModel
 from ai.svm import svmModel
@@ -30,7 +30,7 @@ def ai_model():
         prediction = None
         match data['model']:
             case 'logistic':
-                prediction = logisticRegrssionModel.predict(input_scaled)[0]
+                prediction = logisticRegressionModel.predict(input_scaled)[0]
             case 'randomforest':
                 prediction = randomForestModel.predict(input_scaled)[0]
             case 'decisiontree':
