@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 
-df = pd.read_csv(f'{os.getcwd()}/ai/breast-cancer.csv')
+df = pd.read_csv(f'{os.getcwd()}/ai/dataset/breast-cancer.csv')
 df.drop(['id'], axis=1, inplace=True)
 df['diagnosis'] = LabelEncoder().fit_transform(df['diagnosis'])
 
