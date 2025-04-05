@@ -2,7 +2,6 @@ import os
 import pandas as pd
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, classification_report
 from sklearn.preprocessing import StandardScaler
 import joblib
 
@@ -37,19 +36,11 @@ def train_svm(X_train, X_test, y_train, y_test, kernel="rbf", save_model=False, 
     # Train the model on the training data
     model.fit(X_train, y_train)
     
-    # Predict on the test set and calculate accuracy
-    y_pred = model.predict(X_test)
-    acc = accuracy_score(y_test, y_pred)
-    
     # Save the model if specified
     if save_model:
         joblib.dump(model, model_name)
     
-    return model, acc, y_pred
+    return model, y_pred
 
 # Train SVM on all features and save the model to 'svm_all_features.pkl'
-svm_model, accuracy, y_pred = train_svm(X_train, X_test, y_train, y_test, save_model=True, model_name="svm_all_features.pkl")
-
-# Print model performance
-# print(f"SVM Model (all features) Accuracy: {accuracy * 100:.2f}%")
-# print(classification_report(y_test, y_pred))
+svm_model, y_pred = train_svm(X_train, X_test, y_train, y_test, save_model=True, model_name="svm_all_features.pkl")
