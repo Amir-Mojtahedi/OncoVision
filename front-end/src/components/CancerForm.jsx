@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "./CancerForm.css"; // Import CSS for styling
+import "./CancerForm.css";
 
 function CancerForm() {
   const [formData, setFormData] = useState({
@@ -11,23 +11,33 @@ function CancerForm() {
     perimeter_mean: "",
   });
 
+  const [selectedModel, setSelectedModel] = useState("logistic");
   const [responseMessage, setResponseMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleModelChange = (e) => {
+    setSelectedModel(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const requestBody = {
+        ...formData,
+        model: selectedModel,
+      };
+
       const response = await axios.post(
         "http://127.0.0.1:5000/api/ai-model",
-        formData
+        requestBody
       );
       setResponseMessage(`Prediction: ${response.data.prediction}`);
     } catch (error) {
       setResponseMessage(
-        `Error: ${error.response ? error.response.data : error.message}`
+        `Error: ${error.response ? error.response.data.error : error.message}`
       );
     }
   };
@@ -48,6 +58,26 @@ function CancerForm() {
             />
           </div>
         ))}
+
+        <div className="model-selection">
+          <p>Select AI Model:</p>
+          {["logistic", "randomforest", "decisiontree", "svm"].map((model) => (
+            <div key={model} className="radio-group">
+              <label key={model} htmlFor={model} className="radio-label">
+                {model.charAt(0).toUpperCase() + model.slice(1)}
+              </label>
+              <input
+                type="radio"
+                name="model"
+                id={model}
+                value={model}
+                checked={selectedModel === model}
+                onChange={handleModelChange}
+              />
+            </div>
+          ))}
+        </div>
+
         <button type="submit">Predict</button>
       </form>
       {responseMessage && <p className="response">{responseMessage}</p>}

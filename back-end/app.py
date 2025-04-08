@@ -1,7 +1,11 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS  
 import numpy as np
-from ai.logisticModel import top_5, scaler, logisticRegrssionModel
+from ai.logisticModel import logisticRegressionModel
+from ai.decisionTree import decisionTreeModel
+from ai.randomforestmodel import randomForestModel
+from ai.svm import svmModel
+from ai.utils.aiUtils import scaler, top_5
 
 app = Flask(__name__)
 CORS(app)
@@ -23,7 +27,19 @@ def ai_model():
         input_scaled = scaler.transform(input_array)
 
         # Predict using the model
-        prediction = logisticRegrssionModel.predict(input_scaled)[0]
+        prediction = None
+        match data['model']:
+            case 'logistic':
+                prediction = logisticRegressionModel.predict(input_scaled)[0]
+            case 'randomforest':
+                prediction = randomForestModel.predict(input_scaled)[0]
+            case 'decisiontree':
+                prediction = decisionTreeModel.predict(input_scaled)[0]
+            case 'svm':
+                prediction = svmModel.predict(input_scaled)[0]
+            case _:
+                return jsonify({"error": "Invalid model name"}), 400
+
         tumor = "Malignant" if prediction == 1 else "Benign"
         
         # Return the prediction

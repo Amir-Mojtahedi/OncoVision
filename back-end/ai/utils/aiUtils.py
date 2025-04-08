@@ -1,13 +1,10 @@
-import pandas as pd 
 import os
-
-from sklearn.preprocessing import LabelEncoder 
-from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestClassifier  
+import pandas as pd 
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import LabelEncoder
 
-
-df = pd.read_csv(f'{os.getcwd()}/back-end/ai/breast-cancer.csv')
+df = pd.read_csv(f'{os.getcwd()}/ai/breast-cancer.csv')
 df.drop(['id'], axis=1, inplace=True)
 df['diagnosis'] = LabelEncoder().fit_transform(df['diagnosis'])
 
@@ -25,7 +22,3 @@ X_scaled = scaler.fit_transform(X)
 
 # Split the data into training set and testing set
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.25, random_state=42)
-
-# Create a logistic regression model
-randomForestModel = RandomForestClassifier()
-randomForestModel.fit(X_train, y_train)
