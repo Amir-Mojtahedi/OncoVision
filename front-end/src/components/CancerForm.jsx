@@ -25,13 +25,10 @@ function CancerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const requestBody = {
-        ...formData,
-        model: selectedModel,
-      };
-
+      const requestBody = { ...formData }; // No need to send model name in body
+  
       const response = await axios.post(
-        "http://127.0.0.1:5000/api/ai-model",
+        `http://127.0.0.1:5000/api/tabular/ai-model/${selectedModel}`,
         requestBody
       );
       setResponseMessage(`Prediction: ${response.data.prediction}`);

@@ -8,11 +8,11 @@ from keras._tf_keras.keras.utils import image_dataset_from_directory
 from keras import regularizers
 from sklearn.utils.class_weight import compute_class_weight
 
-# Run this script from the root directory of the project e.i. OncoVision
-train_data_dir = './backend/ai/dataset/train'
-test_data_dir = './backend/ai/dataset/test'
+print("Starting CNN model training...")
 
-batch_size = 32
+# Run this script from the back-end directory of the project e.i. OncoVision/back-end
+train_data_dir = './ai/dataset/train'
+ 
 img_height = 224
 img_width = 224
 num_classes = 2  # Number of classes (e.g., Malignant and Benign)
@@ -20,30 +20,22 @@ num_classes = 2  # Number of classes (e.g., Malignant and Benign)
 train_ds = image_dataset_from_directory(
     directory = train_data_dir,
     label_mode = "binary",
-    batch_size = batch_size,
     image_size = (img_height, img_width),
     seed = 123,
     validation_split = 0.2,
     subset = "training"
 )
+print("Training dataset loaded.")
 
 validation_ds = image_dataset_from_directory(
     directory = train_data_dir,
     label_mode = "binary",
-    batch_size = batch_size,
     image_size = (img_height, img_width),
     seed = 123,
     validation_split = 0.2,
     subset = "validation"
 )
-
-test_ds = image_dataset_from_directory(
-    directory = test_data_dir,
-    label_mode = "binary",
-    batch_size = batch_size,
-    image_size = (img_height, img_width),
-    seed = 123
-)
+print("Validation dataset loaded.")
 
 all_labels = []
 for images, labels in train_ds.unbatch():
@@ -61,6 +53,7 @@ class_weights = compute_class_weight(
 class_weight_dict = {
     int(k): float(v) for k, v in zip(classes, class_weights)
 }
+print("Class weights computed.")
 
 early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=5, min_lr=1e-6)
@@ -94,9 +87,12 @@ model.compile(optimizer="adam",
               loss="binary_crossentropy",
               metrics=['accuracy'])
 
-checkpoint = ModelCheckpoint('./backend/ai/models', save_best_only=True, monitor='val_loss', mode='min')
+print("Model compiled.")
 
-epochs = 10
+checkpoint = ModelCheckpoint('./ai/models/cnn_model.keras', save_best_only=True, monitor='val_loss', mode='min')
+
+epochs = 1
+print("Starting model training...")
 cancer_cnn_model = model.fit(
     train_ds,
     validation_data=validation_ds,

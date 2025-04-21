@@ -3,9 +3,9 @@ import shutil
 import pandas as pd
 
 # Define paths
-csv_file = './back-end/ai/dataset/breast-cancer-images.csv' # Assuming you are currently in OncoVision directory
-base_dir = './back-end/ai/dataset'            # Base directory for organized dataset
-source_root = './back-end/ai'               # Root directory where original images are located
+csv_file = './ai/dataset/breast-cancer-images.csv' # Assuming you are currently in OncoVision/back-end directory
+base_dir = './ai/dataset'            # Base directory for organized dataset
+source_root = './ai'               # Root directory where original images are located
 
 # Load the CSV file
 df = pd.read_csv(csv_file, header=0, names=['fold', 'magnifying', 'dataset_type', 'image_path'])
