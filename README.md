@@ -58,7 +58,16 @@ Four machine learning models were implemented and trained:
  - App.js manages state and API communication
  - Users input feature values into a dynamic form
  - Submissions trigger API calls, and results are displayed clearly on-screen
-6. CNN-Based Image Processing (To Be Added)
+ 
+6. CNN-Based Image Processing 
+ - Loaded mammogram images (224×224) from directory using image_dataset_from_directory
+ - Applied real-time data augmentation (flip, rotation, zoom, contrast)
+ - Normalized pixel values with Rescaling(1./255)
+ - Handled class imbalance using compute_class_weight
+ - Built CNN with 4 convolutional blocks + BatchNorm + MaxPooling
+ - Added Dropout and Dense layers with L2 regularization
+ - Trained with Adam optimizer, binary crossentropy loss, and callbacks: EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+ - Saved best model as cnn_model.keras
 
 ## System Architecture
 ### 1. Tabular Data Classification  
