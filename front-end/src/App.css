@@ -25,3 +25,26 @@
     line-height: 1.5;
   }
   
+  .toggle-buttons {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .toggle-buttons button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    color: #4CAF50;
+    transition: 0.3s ease;
+  }
+  
+  .toggle-buttons .active-toggle {
+    background-color: #4CAF50;
+    color: white;
+  }
+  

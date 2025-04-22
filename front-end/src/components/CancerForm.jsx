@@ -13,6 +13,7 @@ function CancerForm() {
 
   const [selectedModel, setSelectedModel] = useState("logistic");
   const [responseMessage, setResponseMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,21 +25,49 @@ function CancerForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setResponseMessage("Getting your results ready...");
+
     try {
-      const requestBody = {
-        ...formData,
-        model: selectedModel,
-      };
+      const requestBody = { ...formData };
 
       const response = await axios.post(
-        "http://127.0.0.1:5000/api/ai-model",
+        `http://127.0.0.1:5000/api/tabular/ai-model/${selectedModel}`,
         requestBody
       );
-      setResponseMessage(`Prediction: ${response.data.prediction}`);
+
+      let model = "";
+      switch (selectedModel) {
+        case "logistic":
+          model = "Logistic Regression";
+          break;
+        case "randomforest":
+          model = "Random Forest";
+          break;
+        case "decisiontree":
+          model = "Decision Tree";
+          break;
+        case "svm":
+          model = "Support Vector Machine";
+          break;
+        default:
+          break;
+      }
+
+      // Add 1 second delay before showing result
+      setTimeout(() => {
+        setResponseMessage(
+          `${model} Model Prediction: ${response.data.prediction}`
+        );
+        setLoading(false);
+      }, 1000);
     } catch (error) {
-      setResponseMessage(
-        `Error: ${error.response ? error.response.data.error : error.message}`
-      );
+      setTimeout(() => {
+        setResponseMessage(
+          `Error: ${error.response ? error.response.data.error : error.message}`
+        );
+        setLoading(false);
+      }, 1000);
     }
   };
 
@@ -78,7 +107,9 @@ function CancerForm() {
           ))}
         </div>
 
-        <button type="submit">Predict</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Predicting..." : "Predict"}
+        </button>
       </form>
       {responseMessage && <p className="response">{responseMessage}</p>}
     </div>

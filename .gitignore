@@ -177,3 +177,6 @@ cython_debug/
 .vscode
 
 BreaKHis_v1
+
+train
+test
