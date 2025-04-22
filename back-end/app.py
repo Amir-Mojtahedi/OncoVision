@@ -13,7 +13,7 @@ cnn_model = load_model('./ai/models/cnn_model.keras')
 logistic_model = pickle.load(open('./ai/models/logistic_model.sav', 'rb'))
 random_forest_model = pickle.load(open('./ai/models/random_forest_model.sav', 'rb'))
 svm_model = pickle.load(open('./ai/models/svm_model.sav', 'rb'))
-desicion_tree_model = pickle.load(open('./ai/models/decision_tree_model.sav', 'rb'))
+decision_tree_model = pickle.load(open('./ai/models/decision_tree_model.sav', 'rb'))
 
 @app.route('/api/status', methods=['GET'])
 def status():
@@ -39,7 +39,7 @@ def ai_tabular_model(model_name):
             case 'randomforest':
                 prediction = random_forest_model.predict(input_scaled)[0]
             case 'decisiontree':
-                prediction = desicion_tree_model.predict(input_scaled)[0]
+                prediction = decision_tree_model.predict(input_scaled)[0]
             case 'svm':
                 prediction = svm_model.predict(input_scaled)[0]
             case _:
