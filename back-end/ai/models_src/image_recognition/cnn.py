@@ -1,7 +1,5 @@
 from collections import Counter
-import pandas as pd
 import numpy as np
-import tensorflow as tf
 from tensorflow import keras
 from keras.src.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 from keras._tf_keras.keras.utils import image_dataset_from_directory
@@ -91,7 +89,7 @@ print("Model compiled.")
 
 checkpoint = ModelCheckpoint('./ai/models/cnn_model.keras', save_best_only=True, monitor='val_loss', mode='min')
 
-epochs = 1
+epochs = 60
 print("Starting model training...")
 cancer_cnn_model = model.fit(
     train_ds,

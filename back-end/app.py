@@ -1,5 +1,6 @@
 import pickle
 import numpy as np
+from PIL import Image
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from keras.api.models import load_model
@@ -19,7 +20,7 @@ def status():
     return jsonify({"statusCode": 200, "status": "ok"})
 
 @app.route('/api/tabular/ai-model/<model_name>', methods=['POST'])
-def ai_model(model_name):
+def ai_tabular_model(model_name):
     try:
         data = request.json  
 
@@ -52,6 +53,36 @@ def ai_model(model_name):
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+@app.route('/api/image/ai-model/cnn', methods=['POST'])
+def ai_image_model():
+    try:
+        if 'image' not in request.files:
+            return jsonify({"error": "No image file provided"}), 400
 
+        file = request.files['image']
+        if file.filename == '':
+            return jsonify({"error": "Empty filename"}), 400
+
+        # Read the image file and convert to RGB
+        image = Image.open(file.stream).convert("RGB")
+
+        # Resize to match the model's input shape
+        image = image.resize((224, 224))
+
+        # Convert to numpy array and normalize
+        image_array = np.array(image) 
+
+        # Reshape to match the model input: (1, height, width, channels)
+        image_array = image_array.reshape(1, 224, 224, 3)
+
+        # Predict using the CNN model
+        prediction = cnn_model.predict(image_array)
+        tumor = "Malignant" if prediction[0][0] > 0.5 else "Benign"
+
+        return jsonify({"prediction": tumor}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+    
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
