@@ -7,7 +7,7 @@ from keras.api.models import load_model
 from ai.utils.aiUtils import scaler, top_5
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="*")
 
 cnn_model = load_model('./ai/models/cnn_model.keras')
 logistic_model = pickle.load(open('./ai/models/logistic_model.sav', 'rb'))

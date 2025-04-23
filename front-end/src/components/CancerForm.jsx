@@ -32,7 +32,7 @@ function CancerForm() {
       const requestBody = { ...formData };
 
       const response = await axios.post(
-        `http://127.0.0.1:5000/api/tabular/ai-model/${selectedModel}`,
+        `https://be11-2607-fa49-3c43-3400-3c35-25db-dfcd-6794.ngrok-free.app/api/tabular/ai-model/${selectedModel}`,
         requestBody
       );
 
