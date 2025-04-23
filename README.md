@@ -135,8 +135,6 @@ The results below were obtained from an  evaluation performed during development
  - Avoiding overfitting due to class imbalance
 
 ## Future Work
- - Complete the CNN module for image classification
- - Add model selection options and auto-analysis for multiple inputs
  - Integrate with cloud storage for real hospital deployment use cases
 
 ## Conclusion
