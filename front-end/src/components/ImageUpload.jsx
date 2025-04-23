@@ -62,6 +62,29 @@ function ImageUpload() {
         </button>
       </form>
       {responseMessage && <p className="response">{responseMessage}</p>}
+
+      <div style={{ marginTop: "30px", textAlign: "center" }}>
+        <h4>Need test images?</h4>
+        <a
+          href="/test-images/sample-images.zip"
+          download="sample-images.zip"
+          style={{
+            display: "inline-block",
+            backgroundColor: "#28a745",
+            color: "white",
+            padding: "10px 15px",
+            borderRadius: "5px",
+            textDecoration: "none",
+            fontSize: "14px",
+            fontWeight: "bold",
+            transition: "background-color 0.3s ease",
+          }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = "#218838")}
+          onMouseOut={(e) => (e.target.style.backgroundColor = "#28a745")}
+        >
+          📦 Download Sample Images (ZIP)
+        </a>
+      </div>
     </div>
   );
 }
