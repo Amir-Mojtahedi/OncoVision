@@ -18,7 +18,7 @@ OncoVision is an AI-powered system developed to assist in the early detection of
 
 Breast cancer remains one of the leading causes of cancer-related deaths among women. Early detection is crucial in increasing survival rates. Traditional manual analysis of mammogram images can be time-consuming and prone to human error. OncoVision addresses this by providing an AI-assisted tool that classifies tumours as benign or malignant using image-derived data. The system combines machine learning, image preprocessing, and web technologies to deliver a user-friendly and effective solution.
 
-## Dataset 
+## Dataset For Tabular ML Models
 
 The dataset (`breast-cancer.csv`) contains 30 structured features derived from mammographic images (e.g., `radius`, `texture`, `symmetry`). Each row represents a tumour case, labelled as Malignant (`1`) or Benign (`0`).
 
@@ -28,6 +28,20 @@ Removed ID column
 Converted diagnosis to numeric (`M`→`1`, `B`→`0`)
 Normalized all features using StandardScaler
 Split into 80% training and 20% testing sets
+
+## Dataset For CNN Image-Processing
+Dataset for Image-Based Classification (CNN)
+The image dataset used for CNN-based classification consists of over 11,000 labeled mammogram images, organized into subfolders by diagnosis: benign and malignant. Due to its large size (~4 GB), the dataset is not uploaded to the repository.
+
+### Data Preparation:
+- Loaded images from folder structure using `image_dataset_from_directory`
+- Resized all images to `224`×`224` pixels to ensure consistent input shape
+- Converted folder names to binary labels (benign → `0`, malignant → `1`)
+- Split into 80% training and 20% validation using built-in `validation_split`
+- Applied rescaling to normalize pixel values from `0`–`255` to a `0`–`1` range
+- Used real-time data augmentation (`flip`, `rotation`, `zoom`, `contrast`) to improve model generalization
+- Computed class weights to handle class imbalance during training
+
 
 ## Methodology
 1. Preprocessing
@@ -134,4 +148,5 @@ This hybrid approach allows real-time, reliable predictions for healthcare profe
 # Datasets used
 - https://www.kaggle.com/datasets/hayder17/breast-cancer-detection/data
 - https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset
+- https://www.kaggle.com/datasets/ambarish/breakhis?select=BreaKHis_v1
  
