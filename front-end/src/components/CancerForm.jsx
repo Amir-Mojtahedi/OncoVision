@@ -32,7 +32,7 @@ function CancerForm() {
       const requestBody = { ...formData };
 
       const response = await axios.post(
-        `http://127.0.0.1:5000/api/tabular/ai-model/${selectedModel}`,
+        `https://oncovision.onrender.com/api/tabular/ai-model/${selectedModel}`,
         requestBody
       );
 

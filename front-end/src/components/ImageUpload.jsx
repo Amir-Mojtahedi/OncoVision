@@ -26,7 +26,7 @@ function ImageUpload() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/api/image/ai-model/cnn",
+        "https://oncovision.onrender.com/api/image/ai-model/cnn",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
