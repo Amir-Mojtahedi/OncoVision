@@ -115,10 +115,10 @@ Users can switch between the two methods of classification
 ## Results
 
 The results below were obtained from an  evaluation performed during development:
- - SVM: 97.37%
- - Decision Tree: 93%
- - Random Forest: 96.5%
- - Logistic Regression: 97.4%
+ - SVM: 96%
+ - Decision Tree: 94%
+ - Random Forest: 96%
+ - Logistic Regression: 97%
  - CNN: 97%
 
 ## Success Criteria
