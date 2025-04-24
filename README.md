@@ -114,7 +114,7 @@ Users can switch between the two methods of classification
 
 ## Results
 
-The results below were obtained from an  evaluation performed during development (see Colab training notebook):
+The results below were obtained from an  evaluation performed during development:
  - SVM: 97.37%
  - Decision Tree: 93%
  - Random Forest: 96.5%
