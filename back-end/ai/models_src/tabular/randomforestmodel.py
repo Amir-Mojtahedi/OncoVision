@@ -1,3 +1,4 @@
+import os
 from sklearn.ensemble import RandomForestClassifier  
 from ai.utils.aiUtils import X_train, y_train
 import pickle
@@ -9,5 +10,9 @@ randomForestModel.fit(X_train, y_train)
 
 print("Random Forest model trained and saved to the disk.")
 # Save the model to disk
-filename = './ai/models/random_forest_model.sav'
+base_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(base_dir, '..', '..', 'models', 'random_forest_model.sav')
+filename = os.path.abspath(model_path)
+
+# Save the model
 pickle.dump(randomForestModel, open(filename, 'wb'))

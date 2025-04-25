@@ -26,7 +26,7 @@ function ImageUpload() {
 
     try {
       const response = await axios.post(
-        "https://be11-2607-fa49-3c43-3400-3c35-25db-dfcd-6794.ngrok-free.app/api/image/ai-model/cnn",
+        "https://83e9-2607-fa49-3c43-3400-f99b-a984-9fee-eb27.ngrok-free.app/api/image/ai-model/cnn",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
