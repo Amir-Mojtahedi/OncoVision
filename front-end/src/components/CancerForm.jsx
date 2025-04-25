@@ -83,6 +83,7 @@ function CancerForm() {
               name={key}
               value={formData[key]}
               onChange={handleChange}
+              min={0}
               required
             />
           </div>
