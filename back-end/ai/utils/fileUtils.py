@@ -20,6 +20,7 @@ def get_class_label(image_path):
         return None
 
 # Process each row in the DataFrame
+print("Processing dataset. This may take a while...")
 for _, row in df.iterrows():
     dataset_type = row['dataset_type'].lower()
     image_path = row['image_path']
@@ -42,3 +43,5 @@ for _, row in df.iterrows():
         print(f"Source file not found: {src_path}")
     except Exception as e:
         print(f"Error copying {src_path} to {dest_path}: {e}")
+
+print("Dataset processing completed.")
