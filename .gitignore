@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+#node module dependencies
+node_modules/
+.env
+
 # Distribution / packaging
 .Python
 build/
@@ -169,3 +173,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+.vscode
+
+BreaKHis_v1
+
+train
+test

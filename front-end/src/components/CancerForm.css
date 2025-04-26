@@ -1,0 +1,101 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.input-group label{
+  margin-bottom: 3%;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+input[type="number"] {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Radio section */
+.model-selection {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.model-selection p {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Align radio + label side by side */
+.radio-group {
+  display: flex;
+  align-items: center;
+  margin: 5% 0;
+}
+
+.radio-label {
+  margin-right: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Slightly larger clickable radio */
+input[type="radio"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.response {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #222;
+  font-size: 15px;
+  text-align: center;
+}
