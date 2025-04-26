@@ -144,7 +144,6 @@ This hybrid approach allows real-time, reliable predictions for healthcare profe
 
 
 # Datasets used
-- https://www.kaggle.com/datasets/hayder17/breast-cancer-detection/data
 - https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset
 - https://www.kaggle.com/datasets/ambarish/breakhis?select=BreaKHis_v1
  
