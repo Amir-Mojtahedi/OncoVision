@@ -54,7 +54,7 @@ The image dataset used for CNN-based classification consists of over 11,000 labe
  - No manual feature engineering was required due to a clean dataset
  - (Image processing to be integrated in future work)
 
-3. Modelling
+3. Modelling  
 Five machine learning models were implemented and trained:
  - `svm.py`: Trains an SVM classifier
  - `DecisionTree.py`: Builds a decision tree model
